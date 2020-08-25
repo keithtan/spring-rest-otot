@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/quotes")
 public class QuoteController {
 
     private final QuoteRepository repository;
@@ -13,26 +14,26 @@ public class QuoteController {
         this.repository = repository;
     }
 
-    @GetMapping("/quotes")
+    @GetMapping
     List<Quote> all() {
         return repository.findAll();
     }
 
-    @PostMapping("/quotes")
+    @PostMapping
     Quote newQuote(@RequestBody Quote newQuote) {
         return repository.save(newQuote);
     }
 
     // Single item
 
-    @GetMapping("/quotes/{id}")
+    @GetMapping("/{id}")
     Quote one(@PathVariable Long id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new QuoteNotFoundException(id));
     }
 
-    @PutMapping("/quotes/{id}")
+    @PutMapping("/{id}")
     Quote replaceQuote(@RequestBody Quote newQuote, @PathVariable Long id) {
 
         return repository.findById(id)
@@ -47,7 +48,7 @@ public class QuoteController {
                 });
     }
 
-    @DeleteMapping("/quotes/{id}")
+    @DeleteMapping("/{id}")
     void deleteQuote(@PathVariable Long id) {
         repository.deleteById(id);
     }
