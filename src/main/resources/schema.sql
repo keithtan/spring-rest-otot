@@ -4,7 +4,7 @@ drop table if exists quote;
 CREATE TABLE quote (
     id serial,
     content text NOT NULL,
-    author varchar(50) unique not null,
+    author varchar(50) not null,
     PRIMARY KEY (id)
 );
 
