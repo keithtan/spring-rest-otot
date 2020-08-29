@@ -32,10 +32,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    testLogging {
-        events "failed"
-        exceptionFormat "short"
-    }
 }
 
 task stage(type: Copy, dependsOn: [clean, build]) {
