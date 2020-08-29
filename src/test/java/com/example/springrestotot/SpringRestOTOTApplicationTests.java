@@ -47,7 +47,7 @@ class SpringRestOTOTApplicationTests {
     @Test
     public void getQuotes() throws Exception {
         MvcResult mvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.get("/quote")
+                MockMvcRequestBuilders.get("/quotes")
                         .accept(MediaType.APPLICATION_JSON_VALUE)
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
